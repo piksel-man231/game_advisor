@@ -13,12 +13,12 @@ import time
 
 driver = webdriver.Chrome()
 driver.get('https://store.steampowered.com/charts/topselling/RU')
-time.sleep(10)
-new_date = driver.find_element(By.CLASS_NAME, "steamchartsshell_MenuGroup_2X7eT steamchartsshell_Weekly_jC5Vq")
-for i in new_date:
-    print(i)
-new_date.click()
-time.sleep(10)
+time.sleep(5)
+dates = driver.find_element(By.CLASS_NAME, "steamchartsshell_Weekly_jC5Vq")
+new_date = dates.find_elements(By.TAG_NAME, "a")
+new_date[0].click()
+#new_date.click()
+time.sleep(1)
 subprocess.call('TASKKILL /F /IM chrome.exe', shell=True)
 
 
